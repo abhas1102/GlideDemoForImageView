@@ -15,6 +15,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        
+        val imageOne: ImageView = findViewById(R.id.image_one)
+        val imageTwo: ImageView = findViewById(R.id.image_two)
+        val imageThree: ImageView = findViewById(R.id.image_three)
+
+        Glide.with(this).load(image).into(imageOne)
+
+        Glide.with(this).load(image).fitCenter().circleCrop()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .placeholder(R.drawable.ic_launcher_background).into(imageTwo)
+
+        Glide.with(this).load(image).override(300, 400).centerCrop()
+            .error(R.drawable.ic_launcher_background).into(imageThree)
     }
 }
